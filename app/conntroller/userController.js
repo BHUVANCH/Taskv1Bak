@@ -258,17 +258,18 @@ allUsers = (req,res) => {
 logout = (req, res) => {
     authModel.findOneAndRemove({userId : req.body.userId},(err, result) => {
         if (err) {
-            logger.captureError(err.message, 'UserController:login:logout', 10);
+            logger.captureError(err, 'UserController:login:logout', 10);
             let apiResponse = response.format(true, 'Failed to logout', 500, null);
             res.send(apiResponse);
         } else if (Check.isEmpty(result)) {
-            logger.captureError(err.message, 'UserController:logout:findUser', 10);
+            logger.captureError(err, 'UserController:logout:findUser', 10);
             let apiResponse = response.format(true, 'AlreadyLoggedOut or Invalid', 500, null);
             res.send(apiResponse);
         } else {
             logger.captureInfo('User found', 'UserController:FindUser', 10);
             console.log(result);
-            let apiResponse = response.format(true, 'LoggedOut Successufully', 500, result);
+            console.log('Logout Called');
+            let apiResponse = response.format(true, 'LoggedOut Successufully', 200, result);
             res.send(apiResponse);
         }
     });

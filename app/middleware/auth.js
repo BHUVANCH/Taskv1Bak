@@ -12,7 +12,6 @@ const token = require('../libraries/tokenVerify');
 
 
 isAuthorized = (req, res, next) => {
-    console.log(req.body.authToken);
     if (req.params.authToken || req.body.authToken || req.query.authToken || req.header('authToken')) {
         authModel.findOne({authToken : req.params.authToken || req.body.authToken || req.query.authToken || req.header('authToken')}, (err, authDetails) => {
             if (err) {

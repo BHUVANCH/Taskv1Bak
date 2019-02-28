@@ -41,11 +41,11 @@ setServer = (server) => {
                     let userObj = { userId: currentUser.userId, fullName: fullName };
                     allOnLineUsers.push(userObj);
                     console.log(allOnLineUsers);
-                    socket.emit("online-user-list", allOnLineUsers);
+                    myIo.emit("online-user-list", allOnLineUsers);
 
                     //join a room , Chat Room , Unique Room ID
                     // socket.room = 'edChat';
-                    // // joining chat group room
+                    // // // joining chat group room
                     // socket.join(socket.room);
                     // socket.in(socket.room).broadcast.emit('online-user-list', allOnLineUsers);
                 }
@@ -59,8 +59,9 @@ setServer = (server) => {
             console.log(index);
             allOnLineUsers.splice(index, 1);
             console.log(allOnLineUsers);
-            socket.in(socket.room).broadcast.emit('online-user-list', allOnLineUsers);
-            socket.leave(socket.room);
+            myIo.emit("online-user-list", allOnLineUsers);
+            // socket.in(socket.room).broadcast.emit('online-user-list', allOnLineUsers);
+            // socket.leave(socket.room);
         });
 
         socket.on('chat-msg', (data) => {

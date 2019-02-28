@@ -10,10 +10,6 @@ setRouter = (app) => {
 
     app.get(`${baseUrl}/get/for/user`, Auth.isAuthorized, chatController.getChat);
 
-    // return this.http.get(`${this.url}api/v1/chat/get/for/user?senderId=${senderId}&receiverId=${receiverId}
-    // &skip=${skip}&authToken=${Cookie.get('authToken')}`) Auth.isAuthorized,
-
-
 }
 
 module.exports ={

@@ -8,7 +8,7 @@ let setRouter =(app) => {
         app.post(`${baseUrl}/signup`, userController.signUp);
         app.post(`${baseUrl}/login`, userController.login);
         app.get(`${baseUrl}/all`, auth.isAuthorized, userController.allUsers);
-        app.post(`${baseUrl}/logout`, auth.isAuthorized, userController.logout);
+        app.post(`${baseUrl}/logout`, userController.logout);
 
 }
 
